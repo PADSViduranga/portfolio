@@ -1,3 +1,5 @@
+import Reveal, { MaskLine } from "@/components/Reveal";
+
 // Edit the content in these lists to change the About section.
 const NUMBERS = [
   { value: "05", label: "Design patterns used in one backend" },
@@ -7,9 +9,9 @@ const NUMBERS = [
 ];
 
 const EDUCATION = {
-  degree: "Software Engineering undergraduate",
-  school: "Your University", // change this to your university's name
-  years: "20XX to present", // change this to your years
+  degree: "BSc (Hons) Computer Science",
+  school: "NSBM Green University",
+  years: "2025 to present",
 };
 
 const PRINCIPLES = [
@@ -30,13 +32,15 @@ export default function About() {
     <section id="about" className="border-t border-line px-6 py-24 md:px-16 md:py-32">
       {/* big numbers band */}
       <ul className="mb-24 grid grid-cols-2 gap-x-6 gap-y-10 md:grid-cols-4">
-        {NUMBERS.map((n) => (
-          <li key={n.label} className="border-l-2 border-brand pl-4">
-            <p className="font-display text-7xl leading-none md:text-8xl">
-              {n.value}
-              <span className="text-brand">.</span>
-            </p>
-            <p className="mt-2 max-w-[18ch] text-sm text-muted">{n.label}</p>
+        {NUMBERS.map((n, i) => (
+          <li key={n.label}>
+            <Reveal delay={i * 0.1} className="border-l-2 border-brand pl-4">
+              <p className="font-display text-7xl leading-none md:text-8xl">
+                {n.value}
+                <span className="text-brand">.</span>
+              </p>
+              <p className="mt-2 max-w-[18ch] text-sm text-muted">{n.label}</p>
+            </Reveal>
           </li>
         ))}
       </ul>
@@ -46,12 +50,11 @@ export default function About() {
         <div className="flex flex-col gap-6">
           <p className="font-mono text-xs uppercase text-brand">/ About</p>
           <h2 className="font-display text-6xl uppercase leading-[0.9] md:text-7xl">
-            From schema
-            <br />
-            <span className="text-brand">to screen.</span>
+            <MaskLine>From schema</MaskLine>
+            <MaskLine delay={0.1} className="text-brand">to screen.</MaskLine>
           </h2>
           <p className="max-w-prose text-paper/90">
-            I&apos;m a software engineering student in Sri Lanka who likes owning a
+            I&apos;m a computer science student in Sri Lanka who likes owning a
             project end to end: the database, the API, the app and the interface
             people actually use.
           </p>
@@ -88,22 +91,22 @@ export default function About() {
         </div>
 
         {/* right: red sticky note */}
-        <div className="flex items-start justify-center lg:pt-10">
+        <Reveal delay={0.2} y={60} className="flex items-start justify-center lg:pt-10">
           <div className="w-full max-w-xs rotate-2 bg-brand p-6 shadow-2xl shadow-brand/20 transition hover:rotate-0">
             <p className="font-display text-3xl uppercase leading-tight text-ink">
               Design the data first. The rest gets easier.
             </p>
             <p className="mt-6 font-mono text-xs uppercase text-ink/70">My rule for every project</p>
           </div>
-        </div>
+        </Reveal>
       </div>
 
       {/* skills */}
       <div className="mt-24">
         <p className="mb-6 font-mono text-xs uppercase text-muted">Toolkit</p>
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {SKILLS.map((s) => (
-            <div key={s.group} className="rounded-xl border border-line bg-panel p-5">
+          {SKILLS.map((s, i) => (
+            <Reveal key={s.group} delay={i * 0.08} y={24} className="rounded-xl border border-line bg-panel p-5">
               <p className="mb-4 font-mono text-xs uppercase text-brand">{s.group}</p>
               <ul className="flex flex-wrap gap-2">
                 {s.items.map((item) => (
@@ -112,7 +115,7 @@ export default function About() {
                   </li>
                 ))}
               </ul>
-            </div>
+            </Reveal>
           ))}
         </div>
       </div>

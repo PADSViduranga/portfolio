@@ -1,9 +1,10 @@
 import CopyButton from "@/components/CopyButton";
+import { MaskLine } from "@/components/Reveal";
 
 // Replace these with your real details.
 const EMAIL = "your.email@example.com";
 const LINKS = [
-  { label: "GitHub", value: "github.com/your-username", href: "https://github.com/your-username" },
+  { label: "GitHub", value: "github.com/PADSviduranga", href: "https://github.com/PADSviduranga" },
   { label: "LinkedIn", value: "linkedin.com/in/your-name", href: "https://www.linkedin.com/in/your-name" },
 ];
 
@@ -20,9 +21,8 @@ export default function Contact() {
         <div className="flex flex-col gap-8">
           <p className="font-mono text-xs uppercase text-brand">/ Contact</p>
           <h2 className="font-display text-7xl uppercase leading-[0.88] md:text-9xl">
-            Let&apos;s build
-            <br />
-            <span className="text-brand">something.</span>
+            <MaskLine>Let&apos;s build</MaskLine>
+            <MaskLine delay={0.1} className="text-brand">something.</MaskLine>
           </h2>
           <p className="max-w-md text-muted">
             Open to internships, freelance work and university collaborations.

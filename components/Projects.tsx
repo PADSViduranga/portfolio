@@ -1,4 +1,5 @@
 import { PROJECTS, type Project } from "@/data/projects";
+import Reveal, { MaskLine } from "@/components/Reveal";
 
 const STATUS_STYLES: Record<Project["status"], string> = {
   Live: "bg-green-500/15 text-green-400",
@@ -68,9 +69,8 @@ export default function Projects() {
         <div>
           <p className="mb-4 font-mono text-xs uppercase text-brand">/ Selected work</p>
           <h2 className="font-display text-6xl uppercase leading-[0.9] md:text-8xl">
-            Things I&apos;ve
-            <br />
-            <span className="text-brand">built.</span>
+            <MaskLine>Things I&apos;ve</MaskLine>
+            <MaskLine delay={0.1} className="text-brand">built.</MaskLine>
           </h2>
         </div>
         <p className="max-w-sm text-muted">
@@ -81,9 +81,9 @@ export default function Projects() {
 
       <div className="grid gap-6 lg:grid-cols-2">
         {PROJECTS.map((project, i) => (
-          <div key={project.number} className={i === 0 ? "lg:col-span-2" : ""}>
+          <Reveal key={project.number} delay={i * 0.1} className={i === 0 ? "lg:col-span-2" : ""}>
             <ProjectCard project={project} />
-          </div>
+          </Reveal>
         ))}
       </div>
     </section>

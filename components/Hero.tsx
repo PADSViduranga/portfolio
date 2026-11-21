@@ -1,5 +1,6 @@
 import Image from "next/image";
 import FloatingTags from "@/components/FloatingTags";
+import Reveal, { MaskLine } from "@/components/Reveal";
 
 // Put your photo in public/me.png, then change this to true.
 const HAS_PHOTO = false;
@@ -20,12 +21,14 @@ export default function Hero() {
       />
 
       {/* giant PORTFOLIO word */}
-      <p
-        aria-hidden
-        className="pointer-events-none absolute inset-x-0 top-[14vh] -z-20 select-none bg-linear-to-b from-brand to-brand-dark bg-clip-text text-center font-display text-[23vw] uppercase leading-none tracking-tight text-transparent"
-      >
-        Portfolio
-      </p>
+      <Reveal y={80} className="pointer-events-none absolute inset-x-0 top-[14vh] -z-20">
+        <p
+          aria-hidden
+          className="select-none bg-linear-to-b from-brand to-brand-dark bg-clip-text text-center font-display text-[23vw] uppercase leading-none tracking-tight text-transparent"
+        >
+          Portfolio
+        </p>
+      </Reveal>
 
       {/* photo (or placeholder) */}
       <div className="absolute bottom-0 left-1/2 -z-10 h-[72svh] w-[min(80vw,520px)] -translate-x-1/2 mask-[linear-gradient(to_bottom,black_70%,transparent)]">
@@ -48,23 +51,29 @@ export default function Hero() {
 
       {/* text content */}
       <div className="relative z-10 flex min-h-svh flex-col justify-end gap-6 px-6 pb-16 md:px-16 md:pb-24">
-        <p className="font-display text-2xl uppercase">Hello, I&apos;m</p>
+        <p className="font-display text-2xl uppercase">
+          <MaskLine delay={0.2}>Hello, I&apos;m</MaskLine>
+        </p>
 
         <h1 className="font-display text-7xl uppercase leading-[0.9] md:text-8xl">
-          Sachintha<span className="text-brand">.</span>
+          <MaskLine delay={0.3}>
+            Sachintha<span className="text-brand">.</span>
+          </MaskLine>
         </h1>
 
         <p className="font-display text-2xl uppercase leading-tight text-brand md:text-3xl">
-          Software engineer
-          <br />& full-stack builder
+          <MaskLine delay={0.45}>Software engineer</MaskLine>
+          <MaskLine delay={0.55}>&amp; full-stack builder</MaskLine>
         </p>
 
-        <p className="max-w-sm text-base text-muted">
-          I build full-stack web apps, mobile games and the databases behind them,
-          using .NET, React, Flutter and MySQL.
-        </p>
+        <Reveal delay={0.7} y={20}>
+          <p className="max-w-sm text-base text-muted">
+            I build full-stack web apps, mobile games and the databases behind them,
+            using .NET, React, Flutter and MySQL.
+          </p>
+        </Reveal>
 
-        <div className="flex flex-wrap gap-3">
+        <Reveal delay={0.8} y={20} className="flex flex-wrap gap-3">
           <a
             href="#work"
             className="rounded-md bg-brand px-5 py-3 text-sm font-semibold uppercase tracking-wide transition hover:bg-brand-dark"
@@ -77,15 +86,17 @@ export default function Hero() {
           >
             Contact me
           </a>
-        </div>
+        </Reveal>
       </div>
 
       {/* stats on the right (desktop only) */}
       <ul className="absolute right-6 top-1/2 z-10 hidden -translate-y-1/2 flex-col gap-8 text-right md:right-16 md:flex">
-        {STATS.map((stat) => (
+        {STATS.map((stat, i) => (
           <li key={stat.label}>
-            <p className="font-display text-5xl text-brand">{stat.value}</p>
-            <p className="font-mono text-xs uppercase text-muted">{stat.label}</p>
+            <Reveal delay={0.9 + i * 0.1} y={20}>
+              <p className="font-display text-5xl text-brand">{stat.value}</p>
+              <p className="font-mono text-xs uppercase text-muted">{stat.label}</p>
+            </Reveal>
           </li>
         ))}
       </ul>
