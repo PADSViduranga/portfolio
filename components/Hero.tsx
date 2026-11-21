@@ -31,7 +31,7 @@ export default function Hero() {
       </Reveal>
 
       {/* photo (or placeholder) */}
-      <div className="absolute bottom-0 left-1/2 -z-10 h-[72svh] w-[min(80vw,520px)] -translate-x-1/2 mask-[linear-gradient(to_bottom,black_70%,transparent)]">
+      <div className="absolute bottom-0 left-1/2 -z-10 opacity-40 md:opacity-100 h-[72svh] w-[min(80vw,520px)] -translate-x-1/2 mask-[linear-gradient(to_bottom,black_70%,transparent)]">
         {HAS_PHOTO ? (
           <Image
             src="/me.png"
