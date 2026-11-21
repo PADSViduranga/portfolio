@@ -3,7 +3,7 @@ import FloatingTags from "@/components/FloatingTags";
 import Reveal, { MaskLine } from "@/components/Reveal";
 
 // Put your photo in public/me.png, then change this to true.
-const HAS_PHOTO = false;
+const HAS_PHOTO = true;
 
 const STATS = [
   { value: "03", label: "Projects" },
