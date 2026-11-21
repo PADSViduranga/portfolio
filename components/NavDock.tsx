@@ -12,23 +12,30 @@ const SECTIONS = [
 export default function NavDock() {
   const [active, setActive] = useState("home");
 
-  // Highlight the link for whichever section is in the middle of the screen.
+  // Highlight the last section whose top has passed the middle of the screen.
+  // At the very bottom of the page, always highlight the last section.
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) setActive(entry.target.id);
-        });
-      },
-      { rootMargin: "-45% 0px -45% 0px" }
-    );
+    function update() {
+      const middle = window.innerHeight / 2;
+      const atBottom =
+        window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 4;
 
-    SECTIONS.forEach(({ id }) => {
-      const el = document.getElementById(id);
-      if (el) observer.observe(el);
-    });
+      let current = SECTIONS[0].id;
+      for (const { id } of SECTIONS) {
+        const el = document.getElementById(id);
+        if (el && el.getBoundingClientRect().top <= middle) current = id;
+      }
+      if (atBottom) current = SECTIONS[SECTIONS.length - 1].id;
+      setActive(current);
+    }
 
-    return () => observer.disconnect();
+    update();
+    window.addEventListener("scroll", update, { passive: true });
+    window.addEventListener("resize", update);
+    return () => {
+      window.removeEventListener("scroll", update);
+      window.removeEventListener("resize", update);
+    };
   }, []);
 
   return (

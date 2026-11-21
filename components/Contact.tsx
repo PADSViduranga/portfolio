@@ -2,10 +2,10 @@ import CopyButton from "@/components/CopyButton";
 import { MaskLine } from "@/components/Reveal";
 
 // Replace these with your real details.
-const EMAIL = "your.email@example.com";
+const EMAIL = "sachinthaviduranga874@gmail.com";
 const LINKS = [
   { label: "GitHub", value: "github.com/PADSviduranga", href: "https://github.com/PADSviduranga" },
-  { label: "LinkedIn", value: "linkedin.com/in/your-name", href: "https://www.linkedin.com/in/your-name" },
+  { label: "LinkedIn", value: "linkedin.com/in/sachintha-viduranga", href: "https://www.linkedin.com/in/sachintha-viduranga-9963113a6" },
 ];
 
 export default function Contact() {
